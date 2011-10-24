@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<style type="text/css">
+			.mysel{background-color:#CCFFCC;}
+		</style>
+		<script type="text/javascript" src="http://yandex.st/jquery/1.6.4/jquery.min.js"></script>
+
+		<script language="JavaScript" src="./umbexcel.js"></script>
+		<script language="JavaScript">
+			ue = new umbexcel('t','cal','mysel',recalc);
+
+			function recalc(){
+				var summa = 0;
+				var a = ue.get_a();
+				var n = (a.length?a.length:1);
+				var min = ($('#'+a[0]).html())*1
+				var max = 1*0;
+				for (var i=0;i<a.length;i++){
+					if ($('#'+a[i]).hasClass('cal')){
+						var VAL = ($('#'+a[i]).html())*1;
+						summa += VAL;
+						if (min > VAL){
+							min = VAL;
+						}
+						if (max < VAL){
+							max = VAL;
+						}
+					}
+				}
+				$('#sum').html((summa));
+				$('#avg').html((summa*1/n*1));
+				$('#min').html((min));
+				$('#max').html((max));
+			}
+		</script>
+	</head>
+	<body>
+	<div id="calc" align="left" style="background-color:#999999">
+		<b>Sum</b>&nbsp;<span id="sum">0</span><br>
+		<b>Avg</b>&nbsp;<span id="avg" >0</span><br>
+		<b>Min</b>&nbsp;<span id="min">0</span><br>
+		<b>Max</b>&nbsp;<span id="max">0</span><br>
+	</div>
+	<table id="t" border=1>
+		<tr>
+			<td id="td11" class="cal" width=10%>1</td>
+			<td id="td12" class="cal" width=10%>2</td>
+			<td id="td13" class="cal" width=10%>4</td>
+		</tr>
+		<tr>
+			<td id="td21" class="cal">10</td>
+			<td id="td22" class="cal">20</td>
+			<td id="td23" class="cal">40</td>
+		</tr>
+		<tr>
+			<td id="td31" class="cal">100</td>
+			<td id="td32" class="cal">200</td>
+			<td id="td33" class="cal">400</td>
+		</tr>
+		<tr>
+			<td id="td41" class="notcal">1000</td>
+			<td id="td42" class="notcal">2000</td>
+			<td id="td43" class="notcal">4000</td>
+		</tr>
+		<tr>
+			<td id="td51" class="cal">0.1</td>
+			<td id="td52" class="cal">0.2</td>
+			<td id="td53" class="cal">0.4</td>
+		</tr>
+	</table>
+	</body>
+</html>
