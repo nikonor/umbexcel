@@ -18,7 +18,7 @@ function umbexcel(TABLE, TDCLASS, CLASS, FUNC){
   this.__set_class = function() {
     for (var i=0;i<a.length;i++){
       if ($('#'+a[i]).hasClass(TDCLASS)){
-	$('#'+a[i]).addClass(CLASS);
+        $('#'+a[i]).addClass(CLASS);
       }
     }
   }
