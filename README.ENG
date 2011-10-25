@@ -1,0 +1,60 @@
+umbexcel.js
+
+
+1. Description
+
+This library can make your html-tables act like so-called Excel-tables. The main idea is to be able to select any cell or group of cells vertically and/or horizontally. What to do next - your choice, umbexcel.js will give you everything you need.
+
+There are two ways to use the lib:
+1) get an aray from lib
+2) use jquery class selector
+
+Click on the cell to select it. Click on one cell and click on another holdind Shift-button to select region between them.
+The order of selecting doesn't matter. You can do it from top-left to bottom-right and vice versa.
+ 
+
+2. Usage
+
+Include libraries.
+
+<script language="JavaScript" src="/jquery.js"></script>
+<script language="JavaScript" src="/umbexcel.js"></script>
+
+Create object.
+
+$(document).ready(function(){
+	...
+        ue = new umbexcel('t','cal','mysel',recalc);
+});
+The params are:
+1) table id
+2) class of cells to be processed (all cells must have a class)
+3) class which will be assigned to cells after selection
+4) function which will process selected cells
+
+
+3. Example
+
+This is the example of the function that can be passed as a fourth parameter:
+
+function recalc(){
+        var summa = 0;
+        var a = ue.get_a();
+        var n = (a.length?a.length:1);
+        for (var i=0;i<a.length;i++){
+                $('#'+a[i]).addClass('mysel');
+                summa += unpretty_dig($('#'+a[i]).html())*1;
+        }
+        $('#sum').html(pretty_dig(summa));
+        $('#avg').html(pretty_dig(summa*1/n*1));
+}
+
+Here we get an array from lib using get_a() function.
+The second way is to walk through all cells with class-name from third parameter:
+
+$(‘.mysel’).each(function(i,o){
+	...
+});
+
+Have questions? Ask me: 
+nikonor@nikonor.ru
